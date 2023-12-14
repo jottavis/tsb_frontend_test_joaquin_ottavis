@@ -1,4 +1,5 @@
 <script setup>
+import Trait from './Trait.vue';
 </script>
 
 <template>
@@ -16,6 +17,8 @@
                 <br>
                 <small>Description :</small>
                 <label>High-flying, dapper Super Snoop. 'Makes you feel the way you need to feel'. ⚡️ Learn more about The Sandbox and create your account today: [https://www.sandbox.game](https://www.sandbox.game) ⚡️</label>
+                <br><small>Traits :</small>
+                <Trait/>
             </div>
       </div>
     </section>
