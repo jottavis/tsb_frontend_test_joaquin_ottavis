@@ -1,10 +1,11 @@
 <script setup>
-import DoggieFinderVue from "./components/DoggieFinder.vue";
+import DoggieDetail from "./components/DoggieDetail.vue";
+import DoggieFinder from "./components/DoggieFinder.vue";
 
 </script>
 
 <template>
-  <DoggieFinderVue/>
+  <DoggieFinder/>
 </template>
 
 <style scoped>

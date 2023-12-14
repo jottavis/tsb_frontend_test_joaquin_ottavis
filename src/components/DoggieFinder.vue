@@ -1,4 +1,5 @@
 <script setup>
+import DoggieDetail from './DoggieDetail.vue';
 </script>
 
 <template>
@@ -41,5 +42,6 @@
               </div>
         </div>
       </div>
+      <DoggieDetail/>
     </section>
 </template>
