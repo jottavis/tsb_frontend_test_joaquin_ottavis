@@ -44,14 +44,14 @@ const findDoggie = async (token=tokenID.value ) => {
 </script>
 
 <template>
-     <section class=" min-h-screen">
+     <section>
       <div class="container lg:max-w-5xl mt-24 mx-auto lg:px-16 py-4 lg:py-16 grid grid-cols-1 sm:grid-cols-12">
-        <div class=" container col-span-12 sm:col-span-8 place-self-center text-center sm:text-left justify-self-start">
-              <h1 class="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
+        <div class=" container order-last sm:order-first col-span-12 sm:col-span-8 place-self-center text-center sm:text-left justify-self-start">
+              <h1 class="text-white mb-4 text-4xl sm:text-5xl md:text-6xl md:leading-5 lg:text-8xl  lg:leading-tight font-extrabold">
                           Find ur Doggie !
                     <br>
               </h1>
-              <div class="" >
+              <div class="mt-8 px-8 sm:px-0" >
                   <div class="block lg:inline-block text-base  mb-6 lg:text-xl">
                         <input 
                             type="number" 
@@ -59,23 +59,23 @@ const findDoggie = async (token=tokenID.value ) => {
                             id="tokenid" 
                             placeholder="TokenID"
                             v-model.number="tokenID"
-                            class='rounded-full lg:mr-6 px-5 py-2'
+                            class='rounded-full lg:mr-6 lg:w-[90%] md:w-[50%] sm:w-[30%] w-full px-5 py-2'
                         />
                   </div>
-                  <div class="text-white block  lg:inline-block mr-4">
-                        <button @click="findDoggie()" :disabled="tokenID === ''" class=" bg-[#4f751a] hover:bg-[#4a6313] rounded-full px-5 py-2">
+                  <div class="text-white block mb-5 lg:inline-block  md:w-[80%] sm:w-[85%] lg:w-[28%] ">
+                        <button @click="findDoggie()" :disabled="tokenID === ''" class=" bg-[#4f751a] hover:bg-[#4a6313] rounded-full w-full px-5 py-2">
                             Find Doggie !
                         </button>
                   </div>
-                  <div class="text-white block w-full lg:w-9/12 lg:inline-block " >
-                        <button  @click="findRandomDoggie" class=" bg-[#4f751a] lg:w-full hover:bg-[#4a6313]  rounded-full px-5 py-2">
+                  <div class="text-white block md:w-[80%] sm:w-[85%] lg:w-9/12 lg:inline-block " >
+                        <button  @click="findRandomDoggie" class=" bg-[#4f751a] w-full hover:bg-[#4a6313]  rounded-full px-5 py-2">
                             Get Random Doggie !
                         </button>
                   </div>
             </div>
         </div>
-        <div ref="list" class="col-span-4 place-self-center mt-4 lg:mt-0">
-              <div class=" w-[250px] h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] relative">
+        <div ref="list" class="col-span-4 place-self-center mt-4 mb-5 lg:mt-0">
+              <div class=" w-[300px] h-[300px] md:w-[350px] md:h-[350px] relative">
                     <img
                       src="/doggie.avif"
                       alt="doggie"
