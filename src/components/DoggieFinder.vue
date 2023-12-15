@@ -52,7 +52,7 @@ const findDoggie = async (token=tokenID.value ) => {
                     <br>
               </h1>
               <div class="mt-8 px-8 sm:px-0" >
-                  <div class="block lg:inline-block text-base  mb-6 lg:text-xl">
+                  <div class="block lg:inline-block text-base  mb-6 ">
                         <input 
                             type="number" 
                             name="tokenid" 
@@ -62,7 +62,7 @@ const findDoggie = async (token=tokenID.value ) => {
                             class='rounded-full lg:mr-6 lg:w-[90%] md:w-[50%] sm:w-[30%] w-full px-5 py-2'
                         />
                   </div>
-                  <div class="text-white block mb-5 lg:inline-block  md:w-[80%] sm:w-[85%] lg:w-[28%] ">
+                  <div class="text-white block mb-5 lg:inline-block  md:w-[80%] sm:w-[85%] lg:w-[34%] ">
                         <button @click="findDoggie()" :disabled="tokenID === ''" class=" bg-[#4f751a] hover:bg-[#4a6313] rounded-full w-full px-5 py-2">
                             Find Doggie !
                         </button>
