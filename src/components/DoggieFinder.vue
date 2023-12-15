@@ -13,6 +13,10 @@ const showDoggieDetail = computed (()=> {
     return Object.keys(doggie.value)?.length !== 0
 })
 
+const showError =  computed (() => {
+    return  tokenID.value < 0 || tokenID.value > 9999; 
+  })
+
 // setting provider (connection to de blockchain)
 const web3 = new Web3(new Web3.providers.HttpProvider(`https://mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`));
 
@@ -22,16 +26,21 @@ const abi = [{"inputs":[{"internalType":"string","name":"baseURI","type":"string
 // create a new contract object, providing the ABI and address
 const contract = new web3.eth.Contract(abi, import.meta.env.VITE_SMART_CONTRACT_ADDRESS);
 
-const findDoggie = async (token=tokenID.value ) => {    
-    const tkn = contract.methods.tokenURI(token?token:tokenID.value).call();
-    const owner = contract.methods.ownerOf(token?token:tokenID.value).call();
-    const res = await Promise.all([tkn,owner]);
+const findDoggie = async (token=tokenID.value ) => { 
+    try{
+        const tkn = contract.methods.tokenURI(token?token:tokenID.value).call();
+        const owner = contract.methods.ownerOf(token?token:tokenID.value).call();
+        const res = await Promise.all([tkn,owner]);
    
     
-    const tokenURI = await fetch(res[0]);
-    const data = await tokenURI.json();
-    doggie.value.owner = res[1];
-    doggie.value = {...doggie.value,...data}
+        const tokenURI = await fetch(res[0]);
+        const data = await tokenURI.json();
+        doggie.value.owner = res[1];
+        doggie.value = {...doggie.value,...data}
+
+    } catch (e) {
+        console.log("Fetching Doggie Error",e)
+    }   
   }
 
   const findRandomDoggie = async () => {
@@ -52,6 +61,7 @@ const findDoggie = async (token=tokenID.value ) => {
                     <br>
               </h1>
               <div class="mt-8 px-8 sm:px-0" >
+                  <div class="w-full  text-red-600 mb-2"><small v-if='showError'>Try number between 0 & 9999 ! </small></div>
                   <div class="block lg:inline-block text-base  mb-6 ">
                         <input 
                             type="number" 
@@ -62,6 +72,7 @@ const findDoggie = async (token=tokenID.value ) => {
                             class='rounded-full lg:mr-6 lg:w-[90%] md:w-[50%] sm:w-[30%] w-full px-5 py-2'
                         />
                   </div>
+                  
                   <div class="text-white block mb-5 lg:inline-block  md:w-[80%] sm:w-[85%] lg:w-[34%] ">
                         <button @click="findDoggie()" :disabled="tokenID === ''" class=" bg-[#4f751a] hover:bg-[#4a6313] rounded-full w-full px-5 py-2">
                             Find Doggie !
